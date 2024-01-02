@@ -39,7 +39,42 @@ export default function AuthContext({children}){
 
     // LOGANDO UM USUARIO -------------------------------------------------------------------
     async function SingIn(email, password){
-        console.log('Funcionou, estamos logados')
+        if(password === '' || email === ''){
+            alert('Todos os campos são obrigatórios :)')
+            return
+        }
+
+        setLoudingAuth(true)
+
+        try{
+            const response = await api.post('/login', {
+                email: email,
+                password: password
+            })
+            
+            const { token, name, id } = response.data;
+
+            const data = {
+                email,
+                name,
+                id,
+                token,
+            }
+
+            api.defaults.headers['Authorization'] = `Bearer ${token}`
+
+            setUser({
+                email,
+                name,
+                id,
+            })
+
+            setLoudingAuth(false)
+        }
+        catch(err){
+            console.log('Conseguimos localizar um erro:', err)
+            setLoudingAuth(false)
+        }
     }
     // LOGANDO UM USUARIO -------------------------------------------------------------------
 

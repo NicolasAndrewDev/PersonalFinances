@@ -52,11 +52,18 @@ export default function SingIn(){
                     placeholder="Digite sua senha..."
                     value={password}
                     onChangeText={ (text) => setPassword(text) }
+                    secureTextEntry={true}
                     />
                 </AreaInput>
 
                 <LogButtton onPress={ LogUser }>
-                        <TextLogButton>Logar</TextLogButton>
+                    {
+                        loadingAuth ? (
+                            <ActivityIndicator size={25} color={'#FFF'} />
+                        ) : (
+                            <TextLogButton>Logar</TextLogButton>
+                        )
+                    }
                 </LogButtton>
 
                 <RegisterPageButton onPress={ () => Navigation.navigate('SingUp') }>
