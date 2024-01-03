@@ -1,5 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export const AppContext = createContext({})
 
@@ -10,6 +11,39 @@ export default function AuthContext({children}){
 
     const [user, setUser] = useState(null)
     const [loadingAuth, setLoudingAuth] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    // MANTENDO USUARIO LOGADO
+
+    useEffect(() => {
+        async function LoadStorage(){
+            const StorageUser = await AsyncStorage.getItem('@FinanceToken')
+
+            if(StorageUser){
+
+                const response = await api.get('/me', {
+                    headers:{
+                        'Authorization': `Bearer ${StorageUser}`
+                    }
+                }) 
+                .catch(() => {
+                    setUser(null)
+                })
+
+                api.defaults.headers['Authorization'] = `Bearer ${StorageUser}`
+                setUser(response.data)
+
+                setLoading(false)
+                
+            }
+
+            setLoading(false)
+        }
+
+        LoadStorage()
+    }, [])
+
+    // MANTENDO USUARIO LOGADO
 
     // CADASTRANDO UM USUARIO ----------------------------------------------------------
     async function SingUp(name, password, email){
@@ -61,6 +95,8 @@ export default function AuthContext({children}){
                 token,
             }
 
+            await AsyncStorage.setItem('@FinanceToken', token)
+
             api.defaults.headers['Authorization'] = `Bearer ${token}`
 
             setUser({
@@ -79,7 +115,7 @@ export default function AuthContext({children}){
     // LOGANDO UM USUARIO -------------------------------------------------------------------
 
     return(
-        <AppContext.Provider value={{ Singned: !!user ,user, SingUp, SingIn, loadingAuth }}>
+        <AppContext.Provider value={{ Singned: !!user ,user, SingUp, SingIn, loadingAuth, loading }}>
             {children}
         </AppContext.Provider>
     )
