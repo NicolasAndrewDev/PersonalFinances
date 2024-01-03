@@ -114,8 +114,19 @@ export default function AuthContext({children}){
     }
     // LOGANDO UM USUARIO -------------------------------------------------------------------
 
+    // Deslogando usuario
+
+    async function LogOut(){
+        await AsyncStorage.clear()
+        .then(() => {
+            setUser(null)
+        })
+    }
+
+    // Deslogando usuario
+
     return(
-        <AppContext.Provider value={{ Singned: !!user ,user, SingUp, SingIn, loadingAuth, loading }}>
+        <AppContext.Provider value={{ Singned: !!user ,user, SingUp, SingIn, LogOut, loadingAuth, loading }}>
             {children}
         </AppContext.Provider>
     )
