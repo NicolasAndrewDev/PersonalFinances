@@ -7,7 +7,22 @@ import Home from "../pages/Home";
 
 export default function AppRoutes(){
     return(
-        <Drawer.Navigator>
+        <Drawer.Navigator
+        screenOptions={{
+            headerShown: false,
+
+            drawerStyle:{
+                paddingTop: 20,
+                backgroundColor: '#118AB2'
+            },
+
+            drawerActiveBackgroundColor: '#EF476F',
+            drawerInactiveBackgroundColor: '#fff',
+
+            drawerActiveTintColor: '#fff',
+            drawerInactiveTintColor: '#000'
+        }}
+        >
 
             <Drawer.Screen
             name="Home"
