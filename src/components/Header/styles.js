@@ -12,6 +12,4 @@ export const Titulo = styled.Text`
  font-size: 25px;
 `
 
-export const ButtonIcon = styled.TouchableOpacity`
-
-`
+export const ButtonIcon = styled.TouchableOpacity``
