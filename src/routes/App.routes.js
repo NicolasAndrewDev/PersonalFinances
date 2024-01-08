@@ -13,7 +13,7 @@ export default function AppRoutes(){
 
             drawerStyle:{
                 paddingTop: 20,
-                backgroundColor: '#118AB2'
+                backgroundColor: '#E2EBF2'
             },
 
             drawerActiveBackgroundColor: '#EF476F',
