@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 const Drawer = createDrawerNavigator()
 
 import Home from "../pages/Home";
+import RegisterValues from "../pages/RegisterValues"
 
 export default function AppRoutes(){
     return(
@@ -27,6 +28,11 @@ export default function AppRoutes(){
             <Drawer.Screen
             name="Home"
             component={Home}
+            />
+
+            <Drawer.Screen
+            name="Register"
+            component={RegisterValues}
             />
 
         </Drawer.Navigator>
