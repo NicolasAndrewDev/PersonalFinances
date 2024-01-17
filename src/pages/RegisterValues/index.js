@@ -9,6 +9,7 @@ TextButtonRegister
 } from './styles'
 
 import Header from '../../components/Header'
+import RegisterTypes from '../../components/RegisterTypes'
 
 export default function Register(){
     const [description, setDescription] = useState('')
@@ -34,6 +35,8 @@ export default function Register(){
                 value={ value }
                 onChangeTetx={ (text) => setValue(text)}
                 />
+
+                <RegisterTypes  typeValue={type}  sendTypeChanged={ (item) => setType(item) } />
 
                 <ButtonRegister>
                     <TextButtonRegister>Registrar</TextButtonRegister>

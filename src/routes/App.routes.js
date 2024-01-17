@@ -17,7 +17,7 @@ export default function AppRoutes(){
                 backgroundColor: '#E2EBF2'
             },
 
-            drawerActiveBackgroundColor: '#EF476F',
+            drawerActiveBackgroundColor: '#118AB2',
             drawerInactiveBackgroundColor: '#fff',
 
             drawerActiveTintColor: '#fff',
@@ -31,7 +31,7 @@ export default function AppRoutes(){
             />
 
             <Drawer.Screen
-            name="Register"
+            name="Registrar"
             component={RegisterValues}
             />
 
