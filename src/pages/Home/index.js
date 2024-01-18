@@ -1,19 +1,24 @@
 import React, { useContext, useState, useEffect } from "react";
-
-import { AppContext } from "../../Context/Auth";
-import Header from "../../components/Header";
+import { TouchableOpacity } from "react-native";
+import Feather from '@expo/vector-icons/Feather'
 
 import { 
     Background,
-    ValuesList
- } from "./styles";
+    ValuesList,
+    Area,
+    Title,
+    ListLastValues
+} from "./styles";
 
 import { format } from 'date-fns'
-
-import api from "../../services/api";
-
 import { useIsFocused } from "@react-navigation/native";
+
+
+import { AppContext } from "../../Context/Auth";
+import api from "../../services/api";
 import CardsMovements from "../../components/CardsMovements";
+import Header from "../../components/Header";
+import LastMovements from "../../components/LastMovements"
 
 export default function Home(){
     const isFocused = useIsFocused()
@@ -50,9 +55,24 @@ export default function Home(){
             <ValuesList
             data={listMovements}
             horizontal={true}
-            showHorizontalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
             keyExtractor={ item => item.tag }
             renderItem={ ({ item }) => (<CardsMovements data={item}/>) }
+            />
+
+            <Area>
+                <TouchableOpacity>
+                    <Feather name='calendar' size={35} color={'#fff'} />
+                </TouchableOpacity>
+                <Title>Últimas movimentações</Title>
+            </Area>
+
+            <ListLastValues
+            data={[]}
+            vertical={true}
+            showsVerticalScrollIndicator={false}
+            keyExtractor={ item => item.id }
+            renderItem={ ({ item }) => (<LastMovements/>) }
             />
         </Background>
     )
