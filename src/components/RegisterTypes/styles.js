@@ -15,11 +15,8 @@ export const ButtonType = styled.TouchableOpacity`
  height: 50px;
  padding: 8px;
  border-radius: 8px;
- /* border-width: 1.7px; */
- /* border-color: ${ props => props.checked ? '#EF476F' : 'gray' }; */
 `
 
 export const TextButtonType = styled.Text`
  font-size: 22px;
- color: ${ props => props.checked ? '#fff' : '#000' };
 `
