@@ -25,12 +25,19 @@ export default function Home(){
 
     const [dateMovements, setDateMovements] = useState(new Date())
     const [listMovements, setListMovements] = useState([])
+    const [movements, setMovements] = useState([])
 
     useEffect(() => {
         let isActive = true
 
         async function getMovements(){
             let DateFormated = format(dateMovements, 'dd/MM/yyyy')
+
+            const receive = await api.get('/receives', {
+                params:{
+                    date: DateFormated
+                }
+            })
 
             const balance = await api.get('/balance', {
                 params:{
@@ -39,6 +46,7 @@ export default function Home(){
             })
 
             if(isActive){
+                setMovements(receive.data)
                 setListMovements(balance.data)
             }
         }
@@ -68,11 +76,11 @@ export default function Home(){
             </Area>
 
             <ListLastValues
-            data={[]}
+            data={movements}
             vertical={true}
             showsVerticalScrollIndicator={false}
             keyExtractor={ item => item.id }
-            renderItem={ ({ item }) => (<LastMovements/>) }
+            renderItem={ ({ item }) => (<LastMovements data={item} />) }
             />
         </Background>
     )

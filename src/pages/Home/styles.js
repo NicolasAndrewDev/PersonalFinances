@@ -6,7 +6,7 @@ export const Background = styled.SafeAreaView`
 `;
 
 export const ValuesList = styled.FlatList`
- max-height: 300px;
+ max-height: 285px;
 `;
 
 export const Area = styled.View`
@@ -24,4 +24,7 @@ export const Title = styled.Text`
  color: #fff;
 `;
 
-export const ListLastValues = styled.FlatList``
+export const ListLastValues = styled.FlatList`
+ background-color: #118AB2;
+ max-height: 49%;
+`

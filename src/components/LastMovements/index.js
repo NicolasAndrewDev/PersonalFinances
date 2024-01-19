@@ -1,14 +1,23 @@
 import React from "react";
+import Feather from '@expo/vector-icons/Feather'
 
 import { 
  Container,
- TextTipo
+ BoxIcon,
+ TextValue
 } from "./styles";
 
-export default function ListLastMovements(){
+export default function ListLastMovements({ data }){
     return(
         <Container>
-            <TextTipo> lamba lamba lamba </TextTipo>
+            <BoxIcon bg={ data.type } >
+               <Feather 
+               name={ data.type === 'receita' ? 'arrow-up' : 'arrow-down' } 
+               color={'#fff'} 
+               size={35} />   
+            </BoxIcon>
+
+            <TextValue>R${data.value}</TextValue>
         </Container>
     )
 }

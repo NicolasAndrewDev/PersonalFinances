@@ -36,7 +36,7 @@ export default function Register(){
             [
                 {
                     text: 'Cancelar',
-                    style: 'cancel'
+                    style: 'cancel',
                 },
                 {
                     text: 'Confirmar',
