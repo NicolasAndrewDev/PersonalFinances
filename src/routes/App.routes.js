@@ -6,10 +6,12 @@ const Drawer = createDrawerNavigator()
 import Home from "../pages/Home";
 import RegisterValues from "../pages/RegisterValues"
 import Profile from "../pages/Profile"
+import CustomDrawer from "../components/CustonDrawer";
 
 export default function AppRoutes(){
     return(
         <Drawer.Navigator
+        drawerContent={ (props) => <CustomDrawer {...props} /> }
         screenOptions={{
             headerShown: false,
 
