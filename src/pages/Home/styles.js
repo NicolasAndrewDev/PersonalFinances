@@ -26,5 +26,5 @@ export const Title = styled.Text`
 
 export const ListLastValues = styled.FlatList`
  background-color: #118AB2;
- max-height: 49%;
+ height: 220px;
 `

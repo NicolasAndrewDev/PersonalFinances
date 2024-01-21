@@ -54,7 +54,21 @@ export default function Home(){
         getMovements()
 
         return () => isActive = false;
-    }, [isFocused])
+    }, [isFocused, dateMovements])
+
+    async function DeleteItem(id){
+        
+        try{
+            const response = await api.delete('/receives/delete', {
+                params:{
+                    item_id: id
+                }
+            })
+            setDateMovements(new Date())
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     return(
         <Background>
@@ -80,7 +94,7 @@ export default function Home(){
             vertical={true}
             showsVerticalScrollIndicator={false}
             keyExtractor={ item => item.id }
-            renderItem={ ({ item }) => (<LastMovements data={item} />) }
+            renderItem={ ({ item }) => (<LastMovements data={item} Delete={ DeleteItem }  />) }
             />
         </Background>
     )

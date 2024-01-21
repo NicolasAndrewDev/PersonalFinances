@@ -9,7 +9,7 @@ export const Container = styled.View`
  margin-bottom: 10px;
  border-radius: 10px;
  flex-direction: row;
- gap: 5px;
+ justify-content: space-between;
  align-items: center;
 `
 
@@ -25,3 +25,12 @@ export const BoxIcon = styled.View`
  align-items: center;
  justify-content: center;
 `
+
+export const ConatainerReceives = styled.View`
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ gap: 5px;
+`
+
+export const ButtonDelete = styled.TouchableOpacity``

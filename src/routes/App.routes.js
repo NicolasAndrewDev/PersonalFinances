@@ -5,6 +5,7 @@ const Drawer = createDrawerNavigator()
 
 import Home from "../pages/Home";
 import RegisterValues from "../pages/RegisterValues"
+import Profile from "../pages/Profile"
 
 export default function AppRoutes(){
     return(
@@ -33,6 +34,11 @@ export default function AppRoutes(){
             <Drawer.Screen
             name="Registrar"
             component={RegisterValues}
+            />
+
+            <Drawer.Screen
+            name="Perfil"
+            component={Profile}
             />
 
         </Drawer.Navigator>
