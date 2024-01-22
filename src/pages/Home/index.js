@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Modal } from "react-native";
 import Feather from '@expo/vector-icons/Feather'
 
 import { 
@@ -19,6 +19,7 @@ import api from "../../services/api";
 import CardsMovements from "../../components/CardsMovements";
 import Header from "../../components/Header";
 import LastMovements from "../../components/LastMovements"
+import ModalCalendar from "../../components/ModalCalendar"
 
 export default function Home(){
     const isFocused = useIsFocused()
@@ -26,6 +27,7 @@ export default function Home(){
     const [dateMovements, setDateMovements] = useState(new Date())
     const [listMovements, setListMovements] = useState([])
     const [movements, setMovements] = useState([])
+    const [modalVisible, setModalVisible] = useState(false)
 
     useEffect(() => {
         let isActive = true
@@ -70,6 +72,10 @@ export default function Home(){
         }
     }
 
+    function FilterMovementsDay(NewDay){
+        setDateMovements(NewDay)
+    }
+
     return(
         <Background>
             <Header title='Minhas movimentações'/>
@@ -83,7 +89,7 @@ export default function Home(){
             />
 
             <Area>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={ () => setModalVisible(true) }>
                     <Feather name='calendar' size={35} color={'#fff'} />
                 </TouchableOpacity>
                 <Title>Últimas movimentações</Title>
@@ -96,6 +102,13 @@ export default function Home(){
             keyExtractor={ item => item.id }
             renderItem={ ({ item }) => (<LastMovements data={item} Delete={ DeleteItem }  />) }
             />
+
+            <Modal visible={modalVisible} animationType="fade" transparent={true} >
+                <ModalCalendar 
+                setVisible={ () => setModalVisible(false)}
+                Filter={FilterMovementsDay}
+                />
+            </Modal>
         </Background>
     )
 }

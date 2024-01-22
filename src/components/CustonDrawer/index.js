@@ -24,7 +24,7 @@ export default function DrawerCustom(props){
                 style={{  fontWeight: 'bold', fontSize: 20, paddingHorizontal: 10 }}
                 numberOfLines={1}
                 >
-                    { user.name }
+                    { user && user.name }
                 </Text>
             </View>
 
