@@ -32,7 +32,11 @@ export default function Home(){
         let isActive = true
 
         async function getMovements(){
-            let DateFormated = format(dateMovements, 'dd/MM/yyyy')
+            let day = new Date(dateMovements)
+            let onlyDay = day.valueOf() + day.getTimezoneOffset() * 60 * 1000;
+            let DateFormated = format(onlyDay, 'dd/MM/yyyy')
+
+            console.log(DateFormated)
 
             const receive = await api.get('/receives', {
                 params:{
