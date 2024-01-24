@@ -14,7 +14,6 @@ import { format } from 'date-fns'
 import { useIsFocused } from "@react-navigation/native";
 
 
-import { AppContext } from "../../Context/Auth";
 import api from "../../services/api";
 import CardsMovements from "../../components/CardsMovements";
 import Header from "../../components/Header";

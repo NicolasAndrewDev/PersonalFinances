@@ -9,6 +9,10 @@ import {
 } from './styles'
 
 import { Calendar, LocaleConfig } from "react-native-calendars";
+import { ptBR } from "./configLocale";
+
+LocaleConfig.locales['pt-br'] = ptBR;
+LocaleConfig.defaultLocale = 'pt-br';
 
 export default function CalendarMovemnets({ setVisible, Filter }){
     const [dateNow, setDateNow] = useState(new Date())
@@ -22,8 +26,7 @@ export default function CalendarMovemnets({ setVisible, Filter }){
 
         markedDay[date.dateString] = {
             selected: true,
-            selectedColor: '#118AB2',
-            textColor: '#fff'
+            selectedColor: '#118AB2'
         }
 
         setMarkedDate(markedDay)
